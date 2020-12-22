@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="vkonstantinovModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Sklad">
+    <Key>
+      <PropertyRef Name="Num" />
+    </Key>
+    <Property Name="Num" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="adress" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+    <Property Name="vid" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+    <Property Name="rast" Type="Int32" />
+    <NavigationProperty Name="StroyMaterial" Relationship="Self.FK_StroyMaterial_Sklad" FromRole="Sklad" ToRole="StroyMaterial" />
+  </EntityType>
+  <EntityType Name="StroyMaterial">
+    <Key>
+      <PropertyRef Name="Num" />
+    </Key>
+    <Property Name="Num" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Edlzm" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Ost" Type="Int32" Nullable="false" />
+    <Property Name="SkladNum" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Sklad" Relationship="Self.FK_StroyMaterial_Sklad" FromRole="StroyMaterial" ToRole="Sklad" />
+  </EntityType>
+  <EntityType Name="View_StroyMaterial">
+    <Key>
+      <PropertyRef Name="Num" />
+      <PropertyRef Name="Title" />
+    </Key>
+    <Property Name="Num" Type="Int32" Nullable="false" />
+    <Property Name="adress" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+    <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_StroyMaterial_Sklad">
+    <End Role="Sklad" Type="Self.Sklad" Multiplicity="1" />
+    <End Role="StroyMaterial" Type="Self.StroyMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sklad">
+        <PropertyRef Name="Num" />
+      </Principal>
+      <Dependent Role="StroyMaterial">
+        <PropertyRef Name="SkladNum" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="vkonstantinovEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Sklad" EntityType="Self.Sklad" />
+    <EntitySet Name="StroyMaterial" EntityType="Self.StroyMaterial" />
+    <EntitySet Name="View_StroyMaterial" EntityType="Self.View_StroyMaterial" />
+    <AssociationSet Name="FK_StroyMaterial_Sklad" Association="Self.FK_StroyMaterial_Sklad">
+      <End Role="Sklad" EntitySet="Sklad" />
+      <End Role="StroyMaterial" EntitySet="StroyMaterial" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

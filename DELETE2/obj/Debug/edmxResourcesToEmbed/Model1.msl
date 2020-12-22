@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище vkonstantinovModelContainer" CdmEntityContainer="vkonstantinovEntities">
+    <EntitySetMapping Name="Sklad">
+      <EntityTypeMapping TypeName="vkonstantinovModel.Sklad">
+        <MappingFragment StoreEntitySet="Sklad">
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="adress" ColumnName="adress" />
+          <ScalarProperty Name="vid" ColumnName="vid" />
+          <ScalarProperty Name="rast" ColumnName="rast" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StroyMaterial">
+      <EntityTypeMapping TypeName="vkonstantinovModel.StroyMaterial">
+        <MappingFragment StoreEntitySet="StroyMaterial">
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Edlzm" ColumnName="Edlzm" />
+          <ScalarProperty Name="Ost" ColumnName="Ost" />
+          <ScalarProperty Name="SkladNum" ColumnName="SkladNum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_StroyMaterial">
+      <EntityTypeMapping TypeName="vkonstantinovModel.View_StroyMaterial">
+        <MappingFragment StoreEntitySet="View_StroyMaterial">
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="adress" ColumnName="adress" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
